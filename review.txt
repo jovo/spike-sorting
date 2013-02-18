@@ -1,0 +1,148 @@
+-------- Original Message --------
+Subject:	TBME-01626-2012 - review complete
+Date:	Thu, 03 Jan 2013 21:36:17 -0500 (EST)
+From:	office@tbme.embs.org
+To:	lcarin@duke.edu
+
+Dear Prof. Carin,
+
+Your manuscript "Sorting Electrophysiological Data via Dictionary Learning & Mixture Modeling" (TBME-01626-2012) has been reviewed by the  Transactions on Biomedical Engineering (TBME) editorial review board and the decision is MAJOR REVISION.
+
+Below are summary comments of the TBME editorial review board which indicate their concerns and the revisions they suggest to improve the scientific quality of your manuscript. Please revise the manuscript based upon the complete comments listed in the decision letter in Manuscript Central. Please note that if major elements of the critiques are not satisfactorily addressed, the paper may still be rejected.
+
+If you choose to revise, please upload the revised manuscript highlighting all the changes made (printing in RED), and a detailed statement on how you have addressed each of review comments (as a supporting document).
+
+You can use the following link to create your revision:
+
+http://mc.manuscriptcentral.com/tbme-embs?URL_MASK=6t5rn9NnGd5J8dy935tD
+
+Please submit your revision within 90 days from today. It will be administratively withdrawn after 90 days deadline.
+
+Also note that we only accept revisions through Manuscript Central (http://mc.manuscriptcentral.com/embs-ieee).  Additional instructions are at the bottom of this email.
+
+I appreciate your selection of the IEEE Transactions on Biomedical Engineering to publish your work, and I look forward to receiving the revision.
+
+Sincerely,
+
+Bin He
+Editor-in-Chief
+IEEE Transactions on Biomedical Engineering
+
+
+*** PLEASE READ THIS ***
+The comments below are a summary of all the comments and may not be complete. To see the complete
+review, log into manuscript central, go to the author center and click on 'Manuscripts with
+Decisions'.  Click on 'view decision letter' under status.
+
+
+Editor in Chief comments
+========================
+As you modify your manuscript, please keep in mind that page limits are still enforced regardless of whether expanded text is in response to reviewers. Please refer to TBME website for page limit policy.
+
+Associate Editor comments
+========================
+
+The review of your manuscript is now complete.  Several issues were raised by the reviewers, including requests that the authors more thoroughly address possible limitations of the proposed spike sorting algorithm with regard to overlapping spikes from multiple neurons; identifying sparsely firing neurons; identifying changes in the spike waveforms due to neuronal bursting activity; more thorough coverage of the existing literature; and clearer presentation of the main problem being addressed, among other concerns.  
+
+The full text of the reviewers’ comments may be obtained from the manuscript central website.  I ask that you please consider their comments and revise the manuscript accordingly.  When you resubmit your revised manuscript, please include a separate “reply to reviewers” to note how you have addressed the issues raised.
+
+Thank you for choosing the IEEE Transactions on Biomedical Engineering for consideration of your work.
+
+
+Reviewer's Comments
+===================
+
+Reviewer: 1
+Comments to the Author
+The manuscript addresses the issue of spike sorting and combines the issue of detecting spikes with detecting the firing rate. The authors argue that there might be missing detection of spikes in the data which leads to misevaluation of the firing rate of neurons. They claim that the method they present overcomes this issue by including the rate as part of the objects that needs to be revealed from the neural data. 
+
+I read the paper carefully and I was left puzzled. I think the paper does not describe the scientific problem it addresses in a proper manner and as a result it is very hard to evaluate the manuscript. While the keywords might indicate that the the paper is dealing with spike sorting, the term “spike sorting” appears only once on page 7. 
+I think that spike sorting papers should follow the following outline: 1. A review of existing methods and what is the problem with them (I assume that the fact that a non continues recording is the problem this paper is addressing but I am not sure). 2. A piece of data that demonstrates the problem in a clear way (missing here). 3. An outline of the method developed (does not appear in this paper). 4. A formal description of the method (appears in the paper but very hard to follow). 5. Evaluation of the method on artificial data or data with ground truth should be presented (appears here). And finally 6.  A comparison of the method with other methods which are simpler and provide good results in other systems (for example the method of Prentice 2011 PLOS One, Atiya 1992 IEEE.Biomed.Eng) is necessary. I do not think PCA can be the unique method to compare with as it has many pitfalls. 
+
+I think that only after massive rewriting of the paper it can be re-evaluated. 
+
+Minor comments:
+1.	The acronym “ephys” should be omitted. The use of this acronym is quite annoying. 
+2.	I do not see how the word “Forensic” fits into this paper. It does not fit any of the dictionary definitions of the word. 
+3.	The method section should describe the experiments in a proper way. 
+4.	The second to last paragraph of the introduction (“In this paper…”) should be rewritten. It is too confusing in its present form. Too many buzzwords and very little information. 
+
+
+
+Reviewer: 2
+Comments to the Author
+Sorting Electrophysiological Data via Dictionary Learning & Mixture Modeling
+
+A. General impression
+Spike sorting is still an important challenge in neurophysiology, with the decision of how many neurons are present in a recording lying at its core. Scientists have often addressed this problem with mixture modeling in the scope of statistical model identification. However, traditional parametric mixture model approaches suffer from the model selection problem [1]. 
+On the contrary, the presented method here employs nonparametric mixture modeling, featuring joint modeling of data clustering and neural firing. At the same time an adaptive feature representation scheme, i.e. dictionary learning, is jointly adopted along with clustering. Employing dictionary learning for feature representation in spike sorting can be safely considered as a modern alternative of using wavelets (a popular choice in similar studies), overcoming inherent restrictions hardcoded with the selection of a specific wavelet family.
+In general, the presented methodology can be considered state-of-the-art in its field. It addresses limitations of previously reported approaches and introduces new features. The paper is well written, and the modeling methodology seems mathematically sound.
+
+
+B. Main Concern
+The authors introduce a new model for spike sorting that enhances previous similar approaches. Reading throughout the text it is clear that their targets are: a) to relate to previous models b) to enhance previous models incorporating new features c) to outperform previous models through data validation. It is also clear that they have paid attention to many details. To this end, the validation scheme is sufficient and the overall work is novel, sets new standards and deserves publication.
+However, it would be important to stress out whether the presented model is able to connect with other modern problems in the spike sorting scene (whose solutions are currently pursued by resent research). These are currently not identified in the manuscript and their challenges to the presented model are vague. More specifically:
+
+ 1. Overlapping Spikes
+Traditional spike sorting methods fail to identify spikes from multiple neurons, when they overlap due to occurrence within a short time interval. It has already been reported that this failure may cause artificial correlations in brain areas with high firing rate or increased firing synchrony [2].  Recently, a number of different approaches have appeared in the spike sorting literature trying to tackle this problem [3-8].
+
+2. Sparsely firing neurons
+Very recently, the importance of the identification of this type of neurons (neurons with low probability of firing) and its limitations to contemporary algorithms has been highlighted in the spike sorting domain [9-10].
+
+It is not clear if (and how) the presented model is able to tackle these issues (e.g. design/performance) and, to this end, what adjustments could be taken into consideration in future work. However, specific references do exist and they could be extended, where applicable, in terms of discussion. For example:
+
+“(Page 3)… it is desirable to explicitly associate each member of Di with one of the clusters (to know not just how many members of Di are apportioned to a given cluster, but also which data are associated with a given cluster)… (Page 3) Variable zij assigns data sample j … to one of the M possible clusters..”
+Could the model be extended to incorporate associations of each member of Di with more than one clusters / assign a data sample to more than one of the possible clusters? Would this be, perhaps, a partial solution to the overlapping problem or are there any design restrictions to the model? How would the phase difference between overlapping spikes be modeled then?
+
+
+“(Page 7) … the focused nature of the FMM allows learning of specialized clusters that occur over limited days… (Page 7) This highlights the need to allow modeling of different signal rates, as in our model… (Page 7) Among the parameters inferred by the model are approximate posterior distributions on the number of clusters across all days.”
+Does this imply that the proposed model (posterior cluster distribution) could equally cope with the presence of sparsely-firing neurons? If yes, it would be important to be stressed out.
+
+
+C. Other Concerns
+Neuronal bursting
+Could the proposed model tackle the slight progressive changes in the spike waveforms due to neuronal bursting activity (well presented in [11])? If yes, it would be important to be stressed out.
+
+Literature
+The authors could enrich their literature references (mostly introduction section), in comparison to their corresponding conference paper.
+
+
+D. Minor Concerns
+“(Page 2).. recent research indicates that a major portion of the information content related to neural spiking is carried in the spike rate , in terms of the number of spikes within a defined interval [6]… (Page 4).. However, in the context of ephys data, the rate at which neurons fire plays an important role in information content [6].”
+Unless the author’s concept is tailored to brain interfaces, it would be more appropriate to use a more standard reference for ‘rate coding’. See, for example, [11-12] and associated literature.
+
+
+“ (Page 5)…The DP-DL and HDP-DL results correspond to dictionary learning applied separately to each channel (from [5]), and the Matrix-DP (M-DP) and matrix-FMM (M-FMM) with the top 2 principle components without dictionary learning correspond to mixture models with the spikes observed simultaneously across all 4 channels, and the proposed model corresponds to joint dictionary learning all 4 channels, we compare DPDL and FMM based mixture modeling (here both models employ the proposed form of dictionary learning, with the differences manifested in how the mixture component of the model is performed).”
+Difficult to follow. Please split to smaller sentences.
+
+“(Page 7) This highlights the need to allow modeling of different signal rates..”
+Do you mean neural firing rates?
+
+
+References
+[1]	Wood et al. A non-parametric Bayesian approach to spike sorting. Conf Proc IEEE Eng Med Biol Soc (2006) vol. 1 pp. 1165-8
+[2]	Bar-Gad et al. Failure in identification of overlapping spikes from multiple neuron activity causes artificial correlations. J Neurosci Methods (2001) vol. 107 (1-2) pp. 1-13
+[3]	Zhang et al. Spike sorting based on automatic template reconstruction with a partial solution to the overlapping problem. J Neurosci Methods (2004) vol. 135 (1-2) pp. 55-65
+[4]	Wang et al. A robust method for spike sorting with automatic overlap decomposition. IEEE transactions on bio-medical engineering (2006) vol. 53 (6) pp. 1195-8
+[5]	Vargas-Irwin and Donoghue. Automated spike sorting using density grid contour clustering and subtractive waveform decomposition. J Neurosci Methods (2007) vol. 164 (1) pp. 1-18
+[6]	Herbst et al. Spike sorting with hidden Markov models. J Neurosci Methods (2008) vol. 174 (1) pp. 126-34
+[7]	Adamos et al. NASS: an empirical approach to spike sorting with overlap resolution based on a hybrid noise-assisted methodology. J Neurosci Methods (2010) vol. 190 (1) pp. 129-42
+[8]	Franke et al. An online spike detection and spike classification algorithm capable of instantaneous resolution of overlapping spikes. Journal of computational neuroscience (2010) vol. 29 (1-2) pp. 127-148
+[9]	Pedreira et al. How many neurons can we see with current spike sorting algorithms?. J Neurosci Methods (2012) vol. 211 (1) pp. 58-65
+[10]	Adamos et al. In quest of the missing neuron: Spike sorting based on dominant-sets clustering. Computer methods and programs in biomedicine (2012) vol. 107 (1) pp. 28-35
+[11]	Dayan P & Abbott LF. Theoretical Neuroscience: Computational and Mathematical Modeling of Neural Systems. Cambridge, Massachusetts: The MIT Press; 2001. 
+[12]	Rieke F, Warland D, de Ruyter van Steveninck R, Bialek W. Spikes: Exploring the Neural Code. Cambridge, Massachusetts: The MIT Press; 1999.
+
+
+NOTE: Corresponding Author MUST check to see if additional comments were included as a downloadable file in the corresponding author's Author Center, by:
+(a) clicking on Manuscripts with Decisions
+(b) clicking on View Decision Letter at the bottom right
+(c) looking at the bottom of the letter for a link to the review files
+
+
+RESUBMISSION INSTRUCTIONS
+=========================
+In order to properly resubmit your manuscript, please follow the following instructions. Please read them carefully. Not following these instructions will delay the review of you manuscript.
+- go to http://mc.manuscriptcentral.com/embs-ieee and login with the account the manuscript was originally submitted with
+- you will find your manuscript under the "Manuscripts with Decisions" section.
+- follow the steps by clicking on 'create a revision'
