@@ -1,0 +1,161 @@
+%\documentclass[12pt,draftcls,onecolumn]{IEEEtran}
+\documentclass[10pt,twocolumn,twoside]{IEEEtran}
+\usepackage{url,cite,epsf,xspace,amsmath,amssymb,amsfonts,graphicx,subfigure,color,setspace}
+\usepackage{multirow}
+\def\bs{\boldsymbol}
+\def\bf{\mathbf}
+\newcommand{\bds}[1]{\boldsymbol{#1}}
+\newcommand{\ang}[1]{\langle{#1}\rangle}
+
+
+%\documentclass{article} % For LaTeX2e
+%\usepackage{nips11submit_e,times}
+%\documentstyle[nips10submit_09,times,art10]{article} % For LaTeX 2.09
+\usepackage{mathrsfs} % For LaTeX2e
+\usepackage{times,amstext,amsmath,amssymb,latexsym,shapepar,array,epsfig,bm,paralist}
+\usepackage{amsfonts,subfigure}
+\usepackage{amssymb}
+\usepackage{amsthm,amsmath}
+%\usepackage[dvips]{color}
+\usepackage{graphicx}
+%\usepackage{color}
+%\usepackage{enumerate}
+%\newcommand{\bds}[1]{\boldsymbol{#1}}
+%\usepackage{wrapfig}
+%\usepackage{longtable}
+\graphicspath{{figs/}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqs}{\begin{eqnarray}}
+\newcommand{\eeqs}{\end{eqnarray}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+
+
+%\usepackage{graphicx} % more modern
+%\usepackage{epsfig} % less modern
+
+\usepackage{multirow}
+
+% For citations
+
+
+% For algorithms
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{bm}
+% As of 2010, we use the hyperref package to produce hyperlinks in the
+% resulting PDF.  If this breaks your system, please commend out the
+% following usepackage line and replace \usepackage{icml2010} with
+% \usepackage[nohyperref]{icml2010} above.
+\usepackage{hyperref}
+
+
+\newcommand{\Amat}{{\bf A}}
+\newcommand{\Bmat}{{\bf B}}
+\newcommand{\Cmat}{{\bf C}}
+\newcommand{\Dmat}{{\bf D}}
+\newcommand{\Emat}{{\bf E}}
+\newcommand{\Fmat}[0]{{{\bf F}}}
+\newcommand{\Gmat}[0]{{{\bf G}}\xspace}
+\newcommand{\Hmat}[0]{{{\bf H}}\xspace}
+\newcommand{\Imat}{{\bf I}}
+\newcommand{\Jmat}[0]{{{\bf J}}\xspace}
+\newcommand{\Kmat}[0]{{{\bf K}}\xspace}
+\newcommand{\Lmat}[0]{{{\bf L}}\xspace}
+\newcommand{\Mmat}[0]{{{\bf M}}\xspace}
+\newcommand{\Nmat}[0]{{{\bf N}}\xspace}
+\newcommand{\Omat}[0]{{{\bf O}}\xspace}
+\newcommand{\Pmat}[0]{{{\bf P}}}
+\newcommand{\Qmat}[0]{{{\bf Q}}\xspace}
+\newcommand{\Rmat}{{\bf R}}
+\newcommand{\Smat}{{\bf S}}
+\newcommand{\Tmat}[0]{{{\bf T}}\xspace}
+\newcommand{\Umat}[0]{{{\bf U}}\xspace}
+\newcommand{\Vmat}{{\bf V}}
+\newcommand{\Wmat}[0]{{{\bf W}}\xspace}
+\newcommand{\Xmat}{{\bf X}}
+\newcommand{\Ymat}[0]{{{\bf Y}}\xspace}
+\newcommand{\Zmat}{{\bf Z}}
+
+\newcommand{\av}{\boldsymbol{a}}
+\newcommand{\bv}{\boldsymbol{b}}
+\newcommand{\Bv}{\boldsymbol{B}}
+\newcommand{\cv}{\boldsymbol{c}}
+\newcommand{\dv}{\boldsymbol{d}}
+\newcommand{\ev}{\boldsymbol{e}}
+\newcommand{\fv}[0]{{\boldsymbol{f}}\xspace}
+\newcommand{\gv}[0]{{\boldsymbol{g}}\xspace}
+\newcommand{\hv}[0]{{\boldsymbol{h}}\xspace}
+\newcommand{\iv}[0]{{\boldsymbol{i}}\xspace}
+\newcommand{\jv}[0]{{\boldsymbol{j}}\xspace}
+\newcommand{\Kv}{\boldsymbol{K}}
+\newcommand{\lv}[0]{{\boldsymbol{l}}\xspace}
+\newcommand{\mv}{\boldsymbol{m}}
+\newcommand{\nv}[0]{{\boldsymbol{n}}\xspace}
+\newcommand{\ov}[0]{{\boldsymbol{o}}\xspace}
+\newcommand{\pv}{\boldsymbol{p}}
+\newcommand{\qv}[0]{{\boldsymbol{q}}\xspace}
+\newcommand{\rv}{\boldsymbol{r}}
+\newcommand{\sv}{\boldsymbol{s}}
+\newcommand{\tv}[0]{{\boldsymbol{t}}\xspace}
+\newcommand{\uv}{\boldsymbol{u}}
+\newcommand{\vv}{\boldsymbol{v}}
+\newcommand{\wv}{\boldsymbol{w}}
+\newcommand{\xv}{\boldsymbol{x}}
+\newcommand{\yv}{\boldsymbol{y}}
+\newcommand{\zv}{\boldsymbol{z}}
+
+\newcommand{\Gammamat}[0]{{\boldsymbol{\Gamma}}\xspace}
+\newcommand{\Deltamat}{\boldsymbol{\Delta}}
+\newcommand{\Thetamat}{\boldsymbol{\Theta}}
+\newcommand{\Lambdamat}{\boldsymbol{\Lambda}}
+\newcommand{\Ximat}[0]{{\boldsymbol{\Xi}}\xspace}
+\newcommand{\Pimat}[0]{{\boldsymbol{\Pi}}\xspace}
+\newcommand{\Sigmamat}{\boldsymbol{\Sigma}}
+\newcommand{\Upsilonmat}[0]{{\boldsymbol{\Upsilon}}\xspace}
+\newcommand{\Phimat}{\boldsymbol{\Phi}}
+\newcommand{\Psimat}{\boldsymbol{\Psi}}
+\newcommand{\Omegamat}{\boldsymbol{\Omega}}
+
+\newcommand{\alphav}{\boldsymbol{\alpha}}
+\newcommand{\betav}[0]{{\boldsymbol{\beta}}\xspace}
+\newcommand{\gammav}{\boldsymbol{\gamma}}
+\newcommand{\deltav}[0]{{\boldsymbol{\delta}}\xspace}
+\newcommand{\epsilonv}{\boldsymbol{\epsilon}}
+\newcommand{\zetav}[0]{{\boldsymbol{\zeta}}\xspace}
+\newcommand{\etav}[0]{{\boldsymbol{\eta}}}
+\newcommand{\thetav}{\boldsymbol{\theta}}
+\newcommand{\iotav}[0]{{\boldsymbol{\iota}}\xspace}
+\newcommand{\kappav}[0]{{\boldsymbol{\kappa}}\xspace}
+\newcommand{\lambdav}{\boldsymbol{\lambda}}
+\newcommand{\muv}{\boldsymbol{\mu}}
+\newcommand{\nuv}{\boldsymbol{\nu}}
+\newcommand{\xiv}[0]{{\boldsymbol{\xi}}\xspace}
+\newcommand{\omicronv}[0]{{\boldsymbol{\omicron}}\xspace}
+\newcommand{\piv}{\boldsymbol{\pi}}
+\newcommand{\rhov}[0]{{\boldsymbol{\rho}}\xspace}
+\newcommand{\sigmav}[0]{{\boldsymbol{\sigma}}\xspace}
+\newcommand{\tauv}[0]{{\boldsymbol{\tau}}\xspace}
+\newcommand{\upsilonv}[0]{{\boldsymbol{\upsilon}}\xspace}
+\newcommand{\phiv}{\boldsymbol{\phi}}
+\newcommand{\chiv}[0]{{\boldsymbol{\chi}}\xspace}
+\newcommand{\psiv}{\boldsymbol{\psi}}
+\newcommand{\omegav}[0]{{\boldsymbol{\omega}}\xspace}
+
+\newcommand{\p}{\phiv}  % protection
+\newcommand{\pp}{\Phimat}   % set of protections
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+
+\begin{document}
+
+
+\end{document}

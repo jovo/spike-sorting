@@ -1,0 +1,144 @@
+-- in your DL approaches, you allow up to 20 atoms, whereas for the PC approaches, you only allow 2 PCs (which you state does not get better when you do 3).  this seems to me to be a bit unfair, why not use up to 20 PCs too?
+
+-- i am confused by the introduction of X_ij prior to mathcal{D}_i (which i'll write as D_i for short).
+to me, the data are D_i, where i indexes the interval.
+is it the case that an interval corresponds to a threshold crossing?
+then, you *assume* that the D_i consist of X_ij's, for j=1,…M_i,
+but that is a modeling assumption, not part of the data.
+moreover, i don't fully understand the generative link between D_i and {X_ij}_{for all j}
+is it the case that D_i = sum_j X_ij?
+or maybe there are weights?
+i also don't really understand what 'j' is indexing.  "signals"?  that doesn't mean channels.  does it mean "processes"? 
+
+-- "addressing a time-evolving spike firing rate."
+people rarely say "spike firing rate", rather, only "firing rate".  later you guys say "neural firing rate", which is also ok, thus also less popular than the simple "firing rate"
+
+-- "and the methodology is demonstrated on new measured ephys data."
+can you clarify that by "measured" do you mean "experimental" (as opposed to simulated?)
+
+-- "Brain-machine interfaces utilize a sensor array to measure electrical"
+not all BMI uses a sensor array to measure electrical activity.  often it is just one sensor, or MEG, or fMRI, etc.
+
+-- "The complexities of real data, from moving animals,"
+i'd replace "from moving animals" with "especially for awake, behaving paradigms"
+
+-- "and the spike detection phase may be imperfect,"
+it almost certainly *is* imperfect.  i'd write: thus, the spike detection phase is imperfect"
+
+-- "There are biologically significant signals that may not be spikes, e.g., local field potentials [6]."
+i'd write: For example, there are biologically significant signals, such as local field potentials, that may not be spikes [6].
+
+-- "excede" is spelled "exceed" according to my dictionary
+
+-- "grooms near the implant site or chews."
+comma before "or"?
+
+-- "There is therefore a need for additional steps to distinguish"
+i'd replace with: "Subsequent inference might therefore be improved via distinguishing"
+
+-- "For PCA one must a priori select the number of principal components;"
+i'd don't see why that is true.  typically, i try a number of different numbers and see which one works best.  Raftery & Dean (JASA 2006) discuss variable selection for model based clustering, for example.  
+
+-- "If this occurs, traditional feature learning algorithms like PCA or wavelets cannot be employed."
+well, they certainly *can* be employed, though perhaps not "fruitfully employed".
+
+-- "and therefore perform feature extraction even when the spike extraction is imperfect."
+of the same point as above, both approaches still *can* do this, perhaps this one might do it better conditioned on the imputation being sufficiently accurate.  i'd write" and therefore feature extraction can potentially be improved via imputation under missing data scenarios."
+
+-- "with S the number of data samples."
+is this grammatical? i'm used to seeing: "where S is the number of data samples."
+
+-- "This growth without limit in the number of clusters with increasing data is undesirable in the context of ephys analysis, for which there are typically a finite set of processes responsible for the observed data."  do you mean a finite set of *neurons*? if so, i'd say that "typically" is unnecessary here :-)
+
+-- "this implies that we model the number of underlying neural processes– or clusters – separately from the firing rate"
+i don't think that this is a real "implication", i.e., one could conceivably model the number of clusters jointly with firing rate, right?  
+
+-- "Webelievethatthisisthefirsttimethefiringrateofephysdata is modeled jointly with clustering (and, here, jointly with fea- ture/dictionary learning)."
+i kinda think perhaps byron yu did this at one point with his latent variable GP models, but i'm not sure. it seems like it is worth checking.
+
+-- neuroscience papers that i've read rarely actually write "ephys".
+
+-- "a single-unit event (e.g., action potential of a neuron)"
+i think this should be an "i.e." instead of an "e.g." although, later in the paper it becomes clear that i don't understand what you mean by SUE.
+
+-- if \Lambda is sparse, i don't understand why D is TxK, i.e. why not make it TxJ, with J<K.  perhaps motivating this choice is outside the realm of this manuscript?
+
+-- in Eq (2), are the "0"s T dimensional column vectors?
+
+-- "We wish to impose that each column of Xij lives in a linear
+subspace"
+i presume you mean "lives in the same linear subspace"?  technically, don't all vectors live in some linear subspace?
+
+-- \delta_m is defined first after eq (11), but used first after eq (4)
+
+-- "Intracellular recordings give clean signals on a spike train from a specific neuron, providing accurate spike times for that neuron."  
+i'd replace with:
+Intracellular recordings are the gold standard for spike detection.
+
+-- "We consider a spike to be correctly sorted if it is a known spike and is in the known cluster or if it is an unknown spike in the unknown cluster."
+this sentence was difficult for me to parse.  perhaps an equation for computing the numbers reported in table 1?
+
+-- i don't understand table 1.  what are those numbers? where are the error bars?  can you plot it vertically instead of the way it is, i find it very difficult to read.
+
+
+-- Proposed w/DP vs. FMM.  first, i don't really understand the mapping between those names and all the equations above in the methods.  i think a pseudocode display would be illustrative, especially if it could also show how the proposed methods related to the previous methods.
+
+
+-- "These data will be made available to the research community."
+that's cool.  where?  here is a good place that i know of: http://crcns.org/data-sets
+
+
+-- "Note that nearby sensors are close enough to record the signal of a single or small group of neurons, termed a single-unit event. "
+i don't understand this sentence.  what counts as a "single-unit event", a threshold crossing?  typically, SUEs refer to *sorted* spikes, "multi-unit event" typically is used to talk about pre-sorted threshold crossings.  seems like you might want to simply use the term "event"?
+
+-- "However, all eight sensors in a line are too far separated to simultaneously record a single-unit event on all eight." 
+it would be useful to be the details here, ie, how spaced are the sensors per probe, how spaced are probes, how big are sensors, etc. currently, the dimensions are only in the figure, not even the legend, and they are not that legible in the figure---it seems like the fig is a bitmap---do you not have a vector graphic of the sensor? one must exist, i would think.
+
+-- "The data were bandpass filtered (0.3-3 kHz), and then all signals 3.5 times the standard deviation of the background signal were deemed detections. "
+perhaps explain why 3.5 * sigma was chosen?  if there are big outliers, i would think to use something like the MAD (mean/median absolute deviation), or simply the 99th percentile, or some such.
+
+-- fig 1b: i'd rename "D-1" with simply "1", also, i'd move those names up to the upper x-axis and label it "days"
+
+-- fig 1c: you're bayesians, where are your errorbars! :-)
+
+-- in fig 1, i'd be interested in seeing the evidence that suggests, for example, on day 4, a whole bunch of new signals arise.  perhaps some pairs plots of the weights on the dictionary components or some such? also, i'd love to see posteriors on the clusters for each day.  i mean, how confident are we that we have 2 clusters and then 5 clusters?  also, why are the clusters numbered the way that they are? i would have guessed on day 1 clusters get index 1 & 2.  then, as more clusters emerge, they increment the index.  how did you choose the indices?
+
+-- fig 2c: there are <40 dictionary elements.  seems like there is plenty of room to show more than 6.  do the others not look good? or are the weights of the others quite small?
+
+-- "in Figure 3 are depicted"
+i'd replace with "Figure 3 depicts"
+
+-- "the clusters, from Day 4"
+i'd remove the comma
+
+-- "error bars represent one standard deviation, as reflected in the posterior. "
+does this mean 1 SD *of* the posterior? i'm not sure what it means for a posterior to "reflect" a SD.
+
+-- "Note that the cluster in Figure 3(a) corresponds to a localized single-unit event, presumably from a neuron (or a coordinated small group of neurons) near the sensors associated with channels 7 and 8. "
+i was confused by this, not expecting the channels to be named in some non-intuitive order.  i'd rename the channels, or re-order the panels in the figure, or make this ordering more clear in the text.  same goes for the next sentence.
+
+-- "Note that in Figures 3(a)-3(b) the error bars are relatively tight with respect to the strong signals in the set of eight, while the error bars in Figure 3(c) are more pronounced (the mean curves look clean, but this is based upon averaging thousands of signals)."
+this point might be more clear if, instead of showing errorbars, you plotted lots of examples in a faded color.
+
+-- "This suggests that animal motion causes signal artifacts, as discussed in Section I"
+period is missing.
+
+-- "In the context of such online Bayesian learning one typically employs approximate variational Bayes inference rather than Gibbs sampling, which typically manifests signif- icant acceleration [19]."
+too many typicals in this sentence.  also, i think it is worth pointing out the accuracy/efficiency trade-off associated with fewer number of samples and/or VB implementations.
+
+-- "In future research one may constitute a mixture model on pi, with each mixture component reflective of a latent neural (firing) state. Inference of this state could be important for decoding neural signals and controlling external devices or muscles."
+i'm surprised you didn't suggest allowing each p_i to be slowly time-varying. 
+
+
+-- spike sorting is fundamentally merely a step in the analysis chain; that is, the goal is never to simply sort spikes.  typically, for these applications, it is some decoding task.  you don't comment on how using this model effects subsequent inference.  and i wonder: is this a lot more computationally intensive than other techniques? if so, is it worth it?
+
+
+
+
+
+ 
+
+
+
+
+
