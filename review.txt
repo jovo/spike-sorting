@@ -57,7 +57,14 @@ Comments to the Author
 The manuscript addresses the issue of spike sorting and combines the issue of detecting spikes with detecting the firing rate. The authors argue that there might be missing detection of spikes in the data which leads to misevaluation of the firing rate of neurons. They claim that the method they present overcomes this issue by including the rate as part of the objects that needs to be revealed from the neural data. 
 
 I read the paper carefully and I was left puzzled. I think the paper does not describe the scientific problem it addresses in a proper manner and as a result it is very hard to evaluate the manuscript. While the keywords might indicate that the the paper is dealing with spike sorting, the term “spike sorting” appears only once on page 7. 
-I think that spike sorting papers should follow the following outline: 1. A review of existing methods and what is the problem with them (I assume that the fact that a non continues recording is the problem this paper is addressing but I am not sure). 2. A piece of data that demonstrates the problem in a clear way (missing here). 3. An outline of the method developed (does not appear in this paper). 4. A formal description of the method (appears in the paper but very hard to follow). 5. Evaluation of the method on artificial data or data with ground truth should be presented (appears here). And finally 6.  A comparison of the method with other methods which are simpler and provide good results in other systems (for example the method of Prentice 2011 PLOS One, Atiya 1992 IEEE.Biomed.Eng) is necessary. I do not think PCA can be the unique method to compare with as it has many pitfalls. 
+I think that spike sorting papers should follow the following outline: 
+1. A review of existing methods and what is the problem with them (I assume that the fact that a non continuous recording is the problem this paper is addressing but I am not sure). 
+2. A piece of data that demonstrates the problem in a clear way (missing here). 
+3. An outline of the method developed (does not appear in this paper). 
+4. A formal description of the method (appears in the paper but very hard to follow). 
+5. Evaluation of the method on artificial data or data with ground truth should be presented (appears here). 
+And finally 6.  A comparison of the method with other methods which are simpler and provide good results in other systems (for example the method of Prentice 2011 PLOS One, Atiya 1992 IEEE.Biomed.Eng) is necessary. 
+I do not think PCA can be the unique method to compare with as it has many pitfalls. 
 
 I think that only after massive rewriting of the paper it can be re-evaluated. 
 
