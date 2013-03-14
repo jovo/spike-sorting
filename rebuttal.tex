@@ -27,7 +27,8 @@
 \subsection*{General comments} % (fold)
 \label{sub:general_comments}
 
-We would like to thank both reviewers for their very helpful comments.  Below, we have appended the reviewer comments, along with our responses in \jovo{red italics}.  Quotes from the revised manuscript appear in \emph{black italics}.
+We would like to thank both reviewers for their very helpful comments.  Below, we have appended the reviewer comments, along with our responses in \jovo{red italics}.  
+%Quotes from the revised manuscript appear in \emph{black italics}.
 % subsection general_comments (end)
 
 \subsection{Response to Reviewer 1} % (fold)
@@ -36,7 +37,7 @@ We would like to thank both reviewers for their very helpful comments.  Below, w
 \jovo{Thank you for your very helpful comments. We address each of your concerns in order.}
 
 % The manuscript addresses the issue of spike sorting and combines the issue of detecting spikes with detecting the firing rate. The authors argue that there might be missing detection of spikes in the data which leads to misevaluation of the firing rate of neurons. They claim that the method they present overcomes this issue by including the rate as part of the objects that needs to be revealed from the neural data. 
-% I read the paper carefully and I was left puzzled. I think the paper does not describe the scientific problem it addresses in a proper manner and as a result it is very hard to evaluate the manuscript. 
+% 
 
 \subsubsection{Major Concerns} % (fold)
 \label{ssub:major_concerns}
@@ -44,27 +45,32 @@ We would like to thank both reviewers for their very helpful comments.  Below, w
 % subsubsection major_concerns (end)
 
 \begin{enumerate}[a.]
+	
+	\item I read the paper carefully and I was left puzzled. I think the paper does not describe the scientific problem it addresses in a proper manner and as a result it is very hard to evaluate the manuscript. 
+	
+	\jovo{We have significantly revised the abstract, introduction, methods, and discussion to reflect your comments.}
+	
 	\item While the keywords might indicate that the the paper is dealing with spike sorting, the term “spike sorting” appears only once on page 7. 
 	
 	
-	\jovo{Thank you for pointing out this omission.  We have updated the title, abstract, introduction, and methods to make ``spike sorting'' more central to the text. We highlight some of those changes below:}
-	\begin{itemize}
-		\item \textbf{Title:} Electrophysiological Spike Sorting via Joint Dictionary Learning \& Mixture Modeling
-		\item \textbf{Abstract:} A new model is developed for feature learning and clustering of extracellular  electrophysiological data across multiple recording periods for action potential detection and discrimination (``spike'' sorting).
-		\item \textbf{Introduction:} Spike sorting is used throughout our revised Introduction.
-	\end{itemize}
+	\jovo{Thank you for pointing out this omission.  We have updated the title, abstract, introduction, and methods to make ``spike sorting'' more central to the text.}
+	% \begin{itemize}
+	% 	\item \textbf{Title:} Electrophysiological Spike Sorting via Joint Dictionary Learning \& Mixture Modeling
+	% 	\item \textbf{Abstract:} A new model is developed for feature learning and clustering of extracellular  electrophysiological data across multiple recording periods for action potential detection and discrimination (``spike'' sorting).
+	% 	\item \textbf{Introduction:} Spike sorting is used throughout our revised Introduction.
+	% \end{itemize}
 	
 	\item I think that spike sorting papers should follow the following outline...
-	\begin{enumerate}
-		\item A review of existing methods and what is the problem with them.
-		\item A piece of data that demonstrates the problem in a clear way. 
-		\item An outline of the method developed.
-		\item A formal description of the method.
-		\item Evaluation of the method on artificial data or data with ground truth should be presented.
-		\item  A comparison of the method with other methods which are simpler and provide good results in other systems.
-	\end{enumerate}
+	% \begin{enumerate}
+	% 	\item A review of existing methods and what is the problem with them.
+	% 	\item A piece of data that demonstrates the problem in a clear way. 
+	% 	\item An outline of the method developed.
+	% 	\item A formal description of the method.
+	% 	\item Evaluation of the method on artificial data or data with ground truth should be presented.
+	% 	\item  A comparison of the method with other methods which are simpler and provide good results in other systems.
+	% \end{enumerate}
 	
-	\jovo{Thank you for suggesting an improved outline.  We have modified the outline of the text to reflect your suggestion.  Please see the attached table of contents for details.} 
+	\jovo{Thank you for suggesting an improved outline.  We have modified the outline of the text to reflect your suggestion.} 
 	
 	\item I do not think PCA can be the unique method to compare with as it has many pitfalls. 
 	
@@ -92,7 +98,7 @@ We would like to thank both reviewers for their very helpful comments.  Below, w
 	
 	\item The second to last paragraph of the introduction (“In this paper…”) should be rewritten. It is too confusing in its present form. Too many buzzwords and very little information. 
 	
-	\jovo{We have substantially re-written the introduction based largely on your suggestions.  Note that we have added a subsection entitled, ``Connection to Previous Bayesian Non-Parametrics'' to highlight which paragraphs highlight relationship to previous spike sorting methods, and which highlight relationships to previous Bayesian non-parametric methods.}
+	\jovo{We have substantially re-written the introduction based largely on your suggestions.  Note that taken all the material connecting this approach to other Bayesian models to the appendix.}
 \end{enumerate}
 
 
@@ -132,7 +138,7 @@ We would like to thank both reviewers for their very helpful comments.  Below, w
 	
 	\item \textbf{Literature} The authors could enrich their literature references (mostly introduction section), in comparison to their corresponding conference paper.
 	
-	\jovo{We have beefed up our references in the introduction.}
+	\jovo{We have beefed up our references in the introduction and discussion sections.}
 	
 \end{enumerate}
 
@@ -150,11 +156,17 @@ We would like to thank both reviewers for their very helpful comments.  Below, w
 	\item “(Page 2).. recent research indicates that a major portion of the information content related to neural spiking is carried in the spike rate , in terms of the number of spikes within a defined interval [6]… (Page 4).. However, in the context of ephys data, the rate at which neurons fire plays an important role in information content [6].”
 	Unless the author’s concept is tailored to brain interfaces, it would be more appropriate to use a more standard reference for ‘rate coding’. See, for example, [11-12] and associated literature.
 	
+	\jovo{This paragraph has been removed in the revision.  Moreover, we refer the the `Spikes' book now where we do reference decoding.}
+	
 	\item “ (Page 5)…The DP-DL and HDP-DL results correspond to dictionary learning applied separately to each channel (from [5]), and the Matrix-DP (M-DP) and matrix-FMM (M-FMM) with the top 2 principle components without dictionary learning correspond to mixture models with the spikes observed simultaneously across all 4 channels, and the proposed model corresponds to joint dictionary learning all 4 channels, we compare DPDL and FMM based mixture modeling (here both models employ the proposed form of dictionary learning, with the differences manifested in how the mixture component of the model is performed).”
 	Difficult to follow. Please split to smaller sentences.
 	
+	\jovo{This sentence has been moved to the appendix and revised.}
+	
 	\item “(Page 7) This highlights the need to allow modeling of different signal rates..”
 	Do you mean neural firing rates?
+	
+	\jovo{Yes, thank you, corrected.}
 \end{enumerate}
 
 

@@ -295,7 +295,9 @@ if $1\le j\le n$. Assuming $n\sim\emph{\mbox{NegBin}}(\phi,p)$ is a negative bin
 
 The proof is provided in the Appendix.
 
-Concerning sampling $\phi_m$, since $\phi_m\propto$ $ \prod_{i: b_m^{(i)}=1}$ $\mbox{NegBin}(n^{*}_{im};\phi_m ,p_i)\mbox{Ga}( \phi_m;\gamma_0,1)$ \add{(see Appendix}  \ref{sec:related} \add{ for details)}, using Lemma \ref{lem:NBinference}, we can first sample a latent count variable $\ell_{im}$ for each $n^{*}_{im}$ as
+
+\add{Let the total set of data measured during interval $i$ be represented $\bm{\mathcal{D}}_i=\{\Xmat_{ij}\}_{j=1}^{M_i}$, where $M_i$ is the total number of events during interval $i$.  Let $n_{im}^*$ represent the number of data samples in $\bm{\mathcal{D}}_i$ that are apportioned to cluster $m\in\{1,\dots,M\}=\mathcal{S}$, with $M_i$$=\sum_{m=1}^M n_{im}^*$.}
+\change{Concerning sampling}{To sample} $\phi_m$, since $\phi_m\propto$ $ \prod_{i: b_m^{(i)}=1}$ $\mbox{NegBin}(n^{*}_{im};\phi_m ,p_i)\mbox{Ga}( \phi_m;\gamma_0,1)$ \add{(see Appendix}  \ref{sec:related} \add{ for details)}, using Lemma \ref{lem:NBinference}, we can first sample a latent count variable $\ell_{im}$ for each $n^{*}_{im}$ as
 \beq
 \mbox{Pr}(\ell_{im} = l|n^{*}_{im},\phi_m) = R_{\phi_m}(n^*_{im},l),~~l=0,\cdots, n^*_{im}.
 \eeq
@@ -447,7 +449,7 @@ In the context of the analysis, we processed all of the data as before, but now 
 \centering
 
 \subfigure[]{
-   \includegraphics[width=1.0\linewidth] {figs_new/device.eps}
+   \includegraphics[width=0.7\linewidth] {figs_new/device.eps}
    \label{fig:device}
 
  }
@@ -508,7 +510,7 @@ Note from Figure \ref{fig:glob_clustering} that the number of
 detected signals is different for different recording days, despite
 the fact that the recording period reflective of these data (45
 secs) is the same for all days. This highlights the need to allow
-modeling of different signal rates, as in our model but not
+modeling of different \change{signal}{firing} rates, as in our model but not
 emphasized in these results.
 
 Among the parameters inferred by the model are approximate posterior
@@ -644,7 +646,7 @@ The perhaps the most important feature of spike sorting methods that we have not
 \section*{Appendix} \label{sec:appendix}
 
 \setcounter{subsection}{0}
-\subsection{Connection to Previous Bayesian Non-Parametrics} % (fold)
+\subsection{Connection to Bayesian Nonparametric Models} % (fold)
 \label{sub:connection_to_previous_bayesian_non_parametrics}
 
 % subsection connection_to_previous_bayesian_non_parametrics (end)
@@ -655,11 +657,10 @@ The use of nonparametric Bayesian methods like the Dirichlet process (DP) \cite{
 % \note{also removed Donoghue07 citation}
 % \add{Another limitation of almost all existing electrophysiological data methods is that they operate on each putative spike independently.  In contrast, we explicitly model the spike rate of each neuron (jointly with the clustering model), thereby enabling us to borrow strength across the collection of all spiking events.}
 % 
-In this paper we integrate dictionary learning and clustering for analysis of electrophysiological data, as in \cite{Dilan,Bo2011}. However, as an alternative to utilizing a method like DP or HDP \cite{Wood2009,Bo2011} for clustering, we develop a new hierarchical clustering model in which the number of clusters is modeled explicitly; this implies that we model the number of underlying \change{neural processes}{neurons}---or clusters---separately from the firing rate, with the latter controlling the total number of observations. This is done by integrating the Indian buffet process (IBP) \cite{IBP} with the Dirichlet distribution, similar to \cite{compound}, but with unique characteristics. The IBP is a model that may be used to \emph{learn} features representative of data, and each potential feature is a ``dish'' at a ``buffet''; each data sample (here \add{a} neuronal spike) selects which features from the ``buffet'' are most appropriate for its representation. The Dirichlet distribution is used for clustering data, and therefore here we jointly perform feature learning and clustering, by integrating the IBP with the Dirichlet distribution. The proposed framework explicitly models the quantity of data (\change{$e.g.$}{for example}, spikes) measured within a given recording interval. We believe that this is the first time the firing rate of electrophysiological data is modeled jointly with clustering (and, here, jointly with feature/dictionary learning). The model demonstrates state-of-the-art clustering performance on publicly available data. Further, concerning distinguishing single-unit-events, we demonstrate how this may be achieved using the proposed method, considering new measured (experimental) electrophysiological data.
+In this paper we integrate dictionary learning and clustering for analysis of electrophysiological data, as in \cite{Dilan,Bo2011}. However, as an alternative to utilizing a method like DP or HDP \cite{Wood2009,Bo2011} for clustering, we develop a new hierarchical clustering model in which the number of clusters is modeled explicitly; this implies that we model the number of underlying \change{neural processes}{neurons}---or clusters---separately from the firing rate, with the latter controlling the total number of observations. This is done by integrating the Indian buffet process (IBP) \cite{IBP} with the Dirichlet distribution, similar to \cite{compound}, but with unique characteristics. The IBP is a model that may be used to \emph{learn} features representative of data, and each potential feature is a ``dish'' at a ``buffet''; each data sample (here \add{a} neuronal spike) selects which features from the ``buffet'' are most appropriate for its representation. The Dirichlet distribution is used for clustering data, and therefore here we jointly perform feature learning and clustering, by integrating the IBP with the Dirichlet distribution. The proposed framework explicitly models the quantity of data (\change{$e.g.$}{for example}, spikes) measured within a given recording interval. \change{We believe that}{To our knowledge,} this is the first time the firing rate of electrophysiological data is modeled jointly with clustering \emph{and} jointly with feature/dictionary learning. The model demonstrates state-of-the-art clustering performance on publicly available data. Further, concerning distinguishing single-unit-events, we demonstrate how this may be achieved using the \change{proposed}{FMM-DL}  method, considering new measured (experimental) electrophysiological data.
 
 
-\subsection{Relationship to existing models\label{sec:related}}
-
+\subsection{Relationship to Dirichlet priors} \label{sec:related}
 
 
 
@@ -673,6 +674,10 @@ a sharing of the different types of clusters across the time intervals $i$ at wh
 These models have limitations in that the inferred number of clusters grows with observed data (here the clusters are ideally connected to \change{neural processes}{neurons}, the number of which will not necessarily grow with  \change{increasing data}{longer samples}). Further, the above clustering model assumes the number of samples is given, and hence is not modeled (the information-rich firing rate is not modeled).
 Below we develop a framework that yields hierarchical clustering like HDP, but the number of clusters and the data count (\change{$e.g.$}{for example}, spike rate) are modeled explicitly.
 
+\subsection{Other Formulations of the FMM} % (fold)
+\label{sub:other_formulations_of_the_fmm}
+
+% subsection other_formulations_of_the_fmm (end)
 
 Let the total set of data measured during interval $i$ be represented $\bm{\mathcal{D}}_i=\{\Xmat_{ij}\}_{j=1}^{M_i}$\add{, where $M_i$ is the total number of events during interval $i$}. In the experiments below, a ``recording interval'' corresponds to a day on which data were recorded for an hour (data are collected separately on a sequence of days), and the set $\{\Xmat_{ij}\}_{j=1}^{M_i}$ defines all signals that exceeded a threshold during that recording period. In addition to modeling $M_i$, we wish to infer the number of distinct clusters $C_i$ characteristic of $\bm{\mathcal{D}}_i$, and the relative fraction (probability) with which the $M_i$ observations are apportioned to the $C_i$ clusters.
 
@@ -700,8 +705,14 @@ Rather than drawing $(n_{i1}^*,\dots,n_{iM}^*)\sim\mbox{Mult}(M_i;\pi_1^{(i)},\d
 
 
 As a consequence of the manner in which $\hat{\phi}_m^{(i)}$ is drawn in (\ref{eq:gen1}), and the definition of $\piv^{(i)}$ in (\ref{eq:mixt}), for \emph{any} $p_i\in(0,1)$, the proposed model imposes
-\beq \piv^{(i)}\sim\mbox{Dir}(b_1^{(i)}{\phi}_1,\dots,b_M^{(i)}{\phi}_M)\eeq
-Hence the proposed model is a generalization of (\ref{eq:Dir}). Considering the limit $M\rightarrow\infty$, and upon marginalizing out the $\{\nu_m\}$, the binary vectors $\{\bv^{(i)}\}$ are drawn from the Indian buffet process (IBP), denoted $\bv^{(i)}\sim\mbox{IBP}(\alpha)$. The number of non-zero components in each $\bv^{(i)}$ is drawn from $\mbox{Poisson}(\alpha)$, and therefore for finite $\alpha$ the number of non-zero components in $\bv^{(i)}$ is finite, even when $M\rightarrow\infty$. Consequently $\mbox{Dir}(b_1^{(i)}{\phi}_1,\dots,b_M^{(i)}{\phi}_M)$ is well defined even when $M\rightarrow\infty$ since, with probability one, there are only a finite number of non-zero parameters in $(b_1^{(i)}{\phi}_1,\dots,b_M^{(i)}{\phi}_M)$. This model is closely related to the compound IBP Dirichlet (CID) process developed in \cite{compound}, with the following differences.
+\beq \piv^{(i)}\sim\mbox{Dir}(b_1^{(i)}{\phi}_1,\dots,b_M^{(i)}{\phi}_M) \label{eq:gDir} \eeq
+
+
+\subsection{Additional Connections to Other Bayesian Models} % (fold)
+\label{sub:additional_connections_to_other_bayesian_models}
+
+
+\remove{Hence}Eq. (\ref{eq:gDir}) \add{demonstrates that } the proposed model is a generalization of (\ref{eq:Dir}). Considering the limit $M\rightarrow\infty$, and upon marginalizing out the $\{\nu_m\}$, the binary vectors $\{\bv^{(i)}\}$ are drawn from the Indian buffet process (IBP), denoted $\bv^{(i)}\sim\mbox{IBP}(\alpha)$. The number of non-zero components in each $\bv^{(i)}$ is drawn from $\mbox{Poisson}(\alpha)$, and therefore for finite $\alpha$ the number of non-zero components in $\bv^{(i)}$ is finite, even when $M\rightarrow\infty$. Consequently $\mbox{Dir}(b_1^{(i)}{\phi}_1,\dots,b_M^{(i)}{\phi}_M)$ is well defined even when $M\rightarrow\infty$ since, with probability one, there are only a finite number of non-zero parameters in $(b_1^{(i)}{\phi}_1,\dots,b_M^{(i)}{\phi}_M)$. This model is closely related to the compound IBP Dirichlet (CID) process developed in \cite{compound}, with the following differences.
 
 Above we have explicitly derived the relationship between the negative binomial distribution and the CID, and with this understanding we recognize the importance of $p_i$; the CID \emph{assumes} $p_i=1/2$, but there is no theoretical justification for this. Note that  $M_i$$\sim\mbox{NegBin}(\sum_{m=1}^M b_m^{(i)}{\phi}_m^{(i)},p_i)$. The mean of $M_i$ is $(\sum_{m=1}^M b_m^{(i)}{\phi}_m) p_i/(1-p_i)$, and the variance is $(\sum_{m=1}^M b_m^{(i)}{\phi}_m)p_i/(1-p_i)^2$. If $p_i$ is fixed to be  \change{0.5}{$1/2$} as in \cite{compound}, this implies that we believe that the variance is two times the mean, and the mean and variance of $M_i$ are the same for all intervals $i$ and $i^\prime$ for which $\bv^{(i)}=\bv^{(i^\prime)}$. However, in the context of electrophysiological data, the rate at which neurons fire plays an important role in information content \cite{Donoghue07}. Therefore, there are many cases for which intervals $i$ and $i^\prime$ may be characterized by firing of the same neurons ($i.e.$, $\bv^{(i)}=\bv^{(i^\prime)}$) but with very different rates ($M_i\neq M_{i^\prime}$). The modeling flexibility imposed by inferring $p_i$ therefore plays an important practical role for modeling electrophysiological data, and likely for other clustering problems of this type.
 
@@ -709,6 +720,8 @@ Above we have explicitly derived the relationship between the negative binomial 
 To make a connection between the proposed model and the HDP, motivated by (\ref{eq:gen1})-(\ref{eq:gen2}), consider $\bar{\phiv}=(\bar{\phi}_1,\cdots,\bar{\phi}_M) \sim \mbox{Dir}(\gamma_0,\cdots,\gamma_0)$, which corresponds to $(\phi_1,\dots,\phi_M)/\sum_{m^\prime=1}^M \phi_{m^\prime}$. From $\bar{\phiv}$ we yield a \emph{normalized} form of the vector $\phiv=(\phi_1,\dots,\phi_M)$. The normalization constant $\sum_{m=1}^M\phi_m$ is lost after drawing $\bar{\phiv}$; however, because $\phi_m\sim\mbox{Ga}(\gamma_0,1)$, we may consider drawing $\tilde{\alpha}_1\sim\mbox{Ga}(M\gamma_0,1)$, and \emph{approximating} ${\phiv}\approx\tilde{\alpha}_1\bar{\phiv}$. With this approximation for $\phiv$, $\piv^{(i)}$ may be drawn approximately as $\piv^{(i)}\sim\mbox{Dir}(\tilde{\alpha}_1b_1^{(i)}\bar{\phi}_1,\dots,\tilde{\alpha}_1b_M^{(i)}\bar{\phi}_M)$. This yields a simplified and approximate hierarchy
 \beqs & \piv^{(i)}\sim\mbox{Dir}(\tilde{\alpha}_1(\bv^{(i)}\odot\bar{\phiv}))\\ &\bar{\phiv}=(\bar{\phi}_1,\cdots,\bar{\phi}_M) \sim \mbox{Dir}(\gamma_0,\cdots,\gamma_0),~\tilde{\alpha}_1\sim\mbox{Ga}(M\gamma_0,1)\nonumber\eeqs
 with $\bv^{(i)}\sim\mbox{IBP}(\alpha)$ and $\odot$ representing a pointwise/Hadamard product. If we consider $\gamma_0=\hat{\alpha}_0/M$, and the limit $M\rightarrow\infty$, with $\bv^{(i)}$ all ones, this corresponds to the HDP, with $\hat{\alpha}_1\sim\mbox{Ga}(\hat{\alpha}_0,1)$. Therefore, the proposed model is intimately related to the HDP, with three differences: ($i$) $p_i$ is not restricted to be 1/2, which adds flexibility when modeling counts; ($ii$) rather than drawing $\bar{\phiv}$ and the normalization constant $\tilde{\alpha}_1$ separately, as in the HDP, in the proposed model $\phiv$ is drawn directly via $\phi_m\sim\mbox{Ga}(\gamma_0,1)$, with an explicit link to the count of observations $M_i\sim\mbox{NegBin}(\sum_{m=1}^Mb_m^{(i)}\phi_m,p_i)$; and ($iii$) the binary vectors $\bv^{(i)}$ ``focus'' the model on a sparse subset of the mixture components, while in general, within the HDP, all mixture components have non-zero probability of occurrence for all tasks $i$. As demonstrated in Section \ref{sec:results}, this focusing nature of the proposed model is important in the context of electrophysiological data.
+
+% subsection additional_connections_to_other_bayesian_models (end)
 
 
 \subsection{Proof of Lemma 3.1}
