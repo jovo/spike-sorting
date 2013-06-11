@@ -1,0 +1,191 @@
+% \documentclass[journal]{IEEEtran}
+% \input{commands.tex}
+% \usepackage[update,prepend]{epstopdf}
+% \usepackage{trackchanges}
+% \newcommand{\Real}{\mathbb{R}}
+% \begin{document}
+% %
+% % paper title
+% % can use linebreaks \\ within to get better formatting as desired
+% \title{Rebuttal
+% }
+% \author{}
+% 
+% 
+% 
+% % make the title area
+% \maketitle
+% \IEEEpeerreviewmaketitle
+% 
+
+\section*{Rebuttal} % (fold)
+\label{sec:general_rebuttal}
+
+% section general_rebuttal (end)
+
+\setcounter{subsection}{0}
+\subsection*{General comments} % (fold)
+\label{sub:general_comments}
+
+We would like to thank both reviewers for their very helpful comments.  Below, we have appended the reviewer comments, along with our responses in \jovo{red italics}.  
+%Quotes from the revised manuscript appear in \emph{black italics}.
+% subsection general_comments (end)
+
+\subsection{Response to Reviewer 1} % (fold)
+\label{sec:response_to_reviewer_1}
+
+% \jovo{Thank you for your very helpful comments. We address each of your concerns in order.}
+
+% The manuscript addresses the issue of spike sorting and combines the issue of detecting spikes with detecting the firing rate. The authors argue that there might be missing detection of spikes in the data which leads to misevaluation of the firing rate of neurons. They claim that the method they present overcomes this issue by including the rate as part of the objects that needs to be revealed from the neural data. 
+% 
+
+\subsubsection{Major Concerns} % (fold)
+\label{ssub:major_concerns}
+
+% subsubsection major_concerns (end)
+
+\begin{enumerate}[a.]
+	
+	\item I read the paper carefully and I was left puzzled. I think the paper does not describe the scientific problem it addresses in a proper manner and as a result it is very hard to evaluate the manuscript. 
+	
+	\jovo{We have significantly revised the abstract, introduction, methods, and discussion to reflect your comments.}
+	
+	\item While the keywords might indicate that the the paper is dealing with spike sorting, the term “spike sorting” appears only once on page 7. 
+	
+	
+	\jovo{Thank you for pointing out this omission.  We have updated the title, abstract, introduction, and methods to make ``spike sorting'' more central to the text.}
+	% \begin{itemize}
+	% 	\item \textbf{Title:} Electrophysiological Spike Sorting via Joint Dictionary Learning \& Mixture Modeling
+	% 	\item \textbf{Abstract:} A new model is developed for feature learning and clustering of extracellular  electrophysiological data across multiple recording periods for action potential detection and discrimination (``spike'' sorting).
+	% 	\item \textbf{Introduction:} Spike sorting is used throughout our revised Introduction.
+	% \end{itemize}
+	
+	\item I think that spike sorting papers should follow the following outline...
+	% \begin{enumerate}
+	% 	\item A review of existing methods and what is the problem with them.
+	% 	\item A piece of data that demonstrates the problem in a clear way. 
+	% 	\item An outline of the method developed.
+	% 	\item A formal description of the method.
+	% 	\item Evaluation of the method on artificial data or data with ground truth should be presented.
+	% 	\item  A comparison of the method with other methods which are simpler and provide good results in other systems.
+	% \end{enumerate}
+	
+	\jovo{Thank you for suggesting an improved outline.  We have modified the outline of the text to reflect your suggestion.} 
+	
+	\item I do not think PCA can be the unique method to compare with as it has many pitfalls. 
+	
+	\jovo{We agree with this comment whole-heartedly.  For this reason, we have compared the performance of our method with many state of the art algorithms.  For details, please see both Figures 1 and 8.}
+	
+\end{enumerate}
+
+\subsubsection{Minor Concerns} % (fold)
+\label{ssub:minor_concerns}
+
+% subsubsection minor_concerns (end)
+	
+\begin{enumerate}[a.]
+	\item The acronym “ephys” should be omitted. The use of this acronym is quite annoying. 
+	
+	\jovo{We have striken ``ephys'' from the record.}
+	
+	\item I do not see how the word “Forensic” fits into this paper. It does not fit any of the dictionary definitions of the word. 
+	
+	\jovo{Thank for pointing this out.  We have replaced ``forensic'' with ``longitudinal analysis'' throughout.}
+	
+	\item The method section should describe the experiments in a proper way. 
+	
+	\jovo{We have added a section entitled ``Data Acquisition and Pre-processing'' to the methods section.}
+	
+	\item The second to last paragraph of the introduction (“In this paper…”) should be rewritten. It is too confusing in its present form. Too many buzzwords and very little information. 
+	
+	\jovo{We have substantially re-written the introduction based largely on your suggestions.  Note that we have taken all the material connecting this approach to other Bayesian models to the appendix.}
+\end{enumerate}
+
+
+
+
+\subsection{Response to reviewer 2} % (fold)
+\label{sub:response_to_reviewer_2}
+
+% subsection response_to_reviewer_2 (end)
+
+
+\subsubsection{Main Concern} % (fold)
+\label{ssub:main_concern}
+
+% subsubsection main_concern (end)
+
+\begin{enumerate}[a.]
+	\item \textbf{Overlapping Spikes} Traditional spike sorting methods fail to identify spikes from multiple neurons, when they overlap due to occurrence within a short time interval. It has already been reported that this failure may cause artificial correlations in brain areas with high firing rate or increased firing synchrony [2].  Recently, a number of different approaches have appeared in the spike sorting literature trying to tackle this problem [3-8].
+	
+	\jovo{We have added a section to the Discussion section of our manuscript directly addressing this concern.  In brief, FMM does not elegantly handle overlapping spikes in its current incarnation, but we are actively pursuing such a generalization.}
+	
+	\item \textbf{Sparsely firing neurons} Very recently, the importance of the identification of this type of neurons (neurons with low probability of firing) and its limitations to contemporary algorithms has been highlighted in the spike sorting domain [9-10].
+	
+	\jovo{Thank you for this suggestion.  We have now added a synthetic data analysis section to the manuscript devoted exclusively to stressing out the performance of our model in this sparse-firing regime.}
+	
+
+\end{enumerate}
+
+\subsubsection{Other Concerns} % (fold)
+\label{ssub:other_concerns}
+
+
+\begin{enumerate}[a.]
+	\item \textbf{Neuronal bursting} Could the proposed model tackle the slight progressive changes in the spike waveforms due to neuronal bursting activity (well presented in [11])? If yes, it would be important to be stressed out.
+	
+	\jovo{We conjecture that our model might address neuronal bursting better than previously proposed methods.  It is now part of our future extensions.}
+	
+	\item \textbf{Literature} The authors could enrich their literature references (mostly introduction section), in comparison to their corresponding conference paper.
+	
+	\jovo{We have beefed up our references in the introduction and discussion sections.}
+	
+\end{enumerate}
+
+% subsubsection other_concerns (end)
+
+
+
+\subsubsection{Minor Concerns} % (fold)
+\label{ssub:minor_concerns}
+
+% subsubsection minor_concerns (end)
+
+
+\begin{enumerate}[a.]
+	\item “(Page 2) ``\ldots recent research indicates that a major portion of the information content related to neural spiking is carried in the spike rate\ldots''
+	Unless the author’s concept is tailored to brain interfaces, it would be more appropriate to use a more standard reference for ‘rate coding’. See, for example, [11-12] and associated literature.
+	
+	\jovo{This paragraph has been removed in the revision.  Moreover, we refer the the `Spikes' book now where we do reference decoding.}
+	
+	\item “ (Page 5) ``\ldots The DP-DL and HDP-DL results correspond to dictionary learning applied separately to each channel (from [5])\ldots''
+	Difficult to follow. Please split to smaller sentences.
+	
+	\jovo{This sentence has been removed.}
+	
+	\item “(Page 7) This highlights the need to allow modeling of different signal rates..”
+	Do you mean neural firing rates?
+	
+	\jovo{Yes, thank you, corrected.}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+% \small\bibliography{PGFA_NIPS,myreference,Qisong_NIPS2012}%,,NIPS2012
+% \bibliographystyle{plain}
+
+
+
+
+% that's all folks
+\end{document}
+
+
