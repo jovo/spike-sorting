@@ -1,0 +1,265 @@
+% \documentclass[journal]{IEEEtran}
+% \input{commands.tex}
+% \usepackage[update,prepend]{epstopdf}
+% \usepackage{trackchanges}
+% \newcommand{\Real}{\mathbb{R}}
+% \begin{document}
+% %
+% % paper title
+% % can use linebreaks \\ within to get better formatting as desired
+% \title{Rebuttal
+% }
+% \author{}
+% 
+% 
+% 
+% % make the title area
+% \maketitle
+% \IEEEpeerreviewmaketitle
+% 
+
+\section*{Rebuttal} 
+
+\setcounter{subsection}{0}
+\subsection*{General comments} 
+
+We would like to thank the reviewers for their very helpful comments additional insights.  Below, we have appended the reviewer comments, along with our responses in \jovo{red}. Quotes from the revised text are in \jovo{\emph{red italics}}.  
+%Quotes from the revised manuscript appear in \emph{black italics}.
+% subsection general_comments (end)
+
+\subsection{Response to Reviewer 2} % (fold)
+\label{sec:response_to_reviewer_1}
+
+
+\subsubsection{Major Concerns} % (fold)
+\label{ssub:major_concerns}
+
+
+\begin{enumerate}[a.]
+	
+	\item The authors have strengthened their manuscript by comparing the performance of their method with 2 other algorithms. However the incorporation of a simulated white Gaussian (independent and identically distributed) noise profile in the comparison does not adequately support the manuscript. 
+	
+	\jovo{Thank you for this suggestion.  We have revised our analysis of the sparsely firing data according to your suggestion.  In particular, rather than white noise, we incorporate real electrophysiology noise. Please see the revised \S \ref{sec:sparse} for details.}
+	
+\end{enumerate}
+
+\subsubsection{Minor Concerns} 
+
+\begin{enumerate}[a.]
+	\item A definition of the SNR representation (obviously linear) that the authors follow, is absent.
+	
+	\jovo{We have added the definition in Section \ref{sec:eval}.}
+	
+\item 	“(Abstract) We propose a ``construction'' \ldots Our ``construction''
+	The use of term ``algorithm'', ``method'' seems more plausible.
+	
+	\jovo{replaced ``construction'' with ``methodology'' throughout.}
+
+	\item ``(Page 1, L30).. more recordings simply improve our performance.''
+	Replace ‘our’ with ‘its’, or revise.
+
+	\jovo{Replaced with ``\emph{Additional localized recording channels improve the performance of our methodology by incorporating more information.  More recordings allow us to track dynamics of firing over time.}''}
+
+\end{enumerate}
+
+
+
+
+\subsection{Response to reviewer 3}
+
+\subsubsection{General Comments}
+
+
+I will refer to a sentence in the manuscript, e.g., on page 1 in the right column on line 40 as p1 rc 40.
+% 
+Given the huge scientific effort that was invested into the spike sorting problem and the fact that the principal problems are still not solved, the abstract and introduction of this manuscript are very bold. The authors claim to have solved the following problems/their method has the [below] ... attributes.
+% 
+However, in my view, most of these statements are not backed up by the authors with sufficient and convincing results showing that they actually solved the problems. These claims are addressed individually below. The authors should either weaken their claims or add significantly more results.
+
+\jovo{Thank you for pointing out our inappropriately bold language.  We have revised the language and/or performed additional experiments to address each of your specific claims. Note in particular how we have revised \S \ref{sec:intro}. We have appended below part of it for ease:
+
+{\it
+In particular, we are interested in sorting spike from multichannel longitudinal data, where longitudinal data might consist of many experiments conducted in the same animal over weeks or months.  Given such data, we desire a spike sorting that satisfies the following desiderata:
+\begin{enumerate} 
+	\item achieves state-of-the-art performance,
+	\item copes with neurons dropping in or out over longitudinal data,
+	\item improves with more data, 
+	\item is fully automatic, obviating the need for the user to manually tune many ``hyperparameters'', especially the number of single-units,
+	\item benefits from multiple electrodes,
+	\item is robust to artifactual noise, due to movement, for example,
+	\item elegantly handles ``missing data'', for example, due to overlapping spikes,
+	\item facilitates intuitive ``knobs'' so that an expert to fine tune performance, 
+	\item detects sparsely firing neurons, and
+	\item provides an estimate of certainty.
+\end{enumerate}
+
+Here we propose a Bayesian generative model and associated inference procedure; the first, to our knowledge, that satisfies all of the above desiderata to our satisfaction.
+}
+}
+
+
+\subsubsection{Major Comments} 
+
+
+\begin{enumerate}[a.]
+	\item \textbf{Claim a)} Their method is fully automatic with absolutely no human interactions necessary. 
+	% If that is true, why do the authors present the "knob" to fine tune the noise estimation? Is that "knob", if turned, actually always decreasing the performance? The authors have the data to evaluate the performance of the method with different settings of that "knob".
+	
+	\jovo{While our method does not \emph{require} manual fine tuning to achieve state-of-the-art performance, it can still \emph{benefit} from manual tuning of the hyperparemeters.  We have clarified in the text that a benefit of our generative model is ``knobs'' that are intuitive, such that if an expert disagrees with the algorithm's performance, it can easily be adapted appropriately. In particular, in addition to the revision to \S \ref{sec:intro} appended above, we also modified \S \ref{sec:tuning} as shown below:
+	
+	{\it
+	Thus, our code runs ``out-of-the-box'' to yield state-of-the-art accuracy on the dataset that we tested.  And yet, expert experimentalist could desire different clustering results, further improving the performance.  Because our inference methodology is based on a biophysical model, all of the hyperparameters have natural and intuitive interpretations.  Therefore, adjusting the performance is relatively intuitive.  
+	Although all of the results presented above were manifested without any model tuning, we now discuss how one may constitute a single ``knob'' (parameter) that a neuroscientist may ``turn'' to examine different kinds of results.
+	}
+	
+	}
+	
+	\item \textbf{Claim b)} The methods performance improves with number of recording channels.
+	% This is not shown by the authors. For that they would have to run their sorting on a varying number of channels and show that the \emph{increase} of their performance is consistently higher than that of other methods.
+	
+	\jovo{We regrettably failed to justify this claim sufficiently in the main text. In addition to softening the claim in \S \ref{sec:intro}  (we just require that the method benefits from multiple electrodes) we add the below text to \S \ref{sub:concept1} which describes how we use multiple channels to assist in detecting events that are not isolated single unit spikes.
+	
+	{\it	Moreover, we can ascertain that certain movement or other artifacts---which would appear to be spikes if only observing a single channel---are clearly not spikes from a single neuron, as evidenced by the fact that they are observed across all the channels, which is implausible for a single neuron. Note that such a spike looking event across all channels could, for instance, be a synchronized spike across many neighboring neurons, or movement. While without video or some other evidence of movement it is difficult to distinguish between these two situations, neither setting provides much evidence for a spike from the isolated unit that we believe to be recording from.   For recording in awake behaving animals, such artifacts can be quite common.} }
+	
+	\item \textbf{Claim c)} The methods performance improves with length of recordings. 
+	% That would be a very interesting analysis to conduct and the authors should show this. Many methods have the problem that several hours of recordings contain too many spikes for the sorter to work well although, in principle, more and more spikes should make it possible to estimate cluster densities more accurately. How is performance of the method affected by length? What happens for very long recordings?
+	
+	\jovo{We have softened this claim.  Note that Figure \ref{fig:likelihood} shows that as we increase the amount of data, the per-spike predictive log-likelihood increases.  }
+	
+	\item \textbf{Claim d)} The method is robust to movement artifacts by distinguishing them from single unit spikes by ``sharing information across channels''. 
+	% On p2 rc 2 the authors describe artifacts as spikes on one channel. In Fig.6 they show a ``noise unit'' that looks like a spike on all channels and refer to it as an artifact.
+	% a) There is an inconsistency in what the authors refer to as artifacts (single channel vs all channels).
+	% b) To my knowledge, the worst form of artifacts are indeed caused by movements but are of microphonic nature, meaning they are cyclic over potentially longer periods of time in the same frequency band as spikes and might be strongly shared among different channels of a multielectrode. This is not at all addressed by the authors.
+	% c) The authors do not show in any way convincingly that their method is robust to artifacts (as they claim). The signal they show in fig.6 could be coming from many small amplitude spikes from neurons further away.
+	
+	\jovo{Thank you for pointing this out. The above appended new quote from \S \ref{sub:concept1} hopefully clarifies this point.  
+	
+	}
+
+	
+	\item \textbf{Claim e)} The method handles missing data. 
+	% I do not see that this is of any importance for spike sorting, especially not the way the it is shown in fig.3. This is not an illustration of ``substantial missing data'' (p6 lc 50) as claimed by the authors. The samples that are missing are probably most uninformative about the waveform and might actually be contaminated by overlapping spikes. Often, cutting far into the waveform and concentrating on the very region around the peak can thus increase performance!
+	
+	\jovo{We agree that cutting far into the waveform can improve spiking performance. We have modified the requirement to be ``\emph{elegantly handles missing data}''.  In a sense, we are leveraging the insight that you point out.  Essentially, our approach is robust to the waveform being truncated.  Rather than requiring that the investigator explicitly truncate the waveforms, she can leave them untruncated, and the algorithm can use those waveforms that are truncated, along with those that are not.  }
+	
+	\item \textbf{Claim f)} The method can deal with non-stationary data over days and even weeks.
+	\item \textbf{Claim h)} The method can find neurons that appear in the data.
+	\item \textbf{Claim i)} The method can re-find neurons that disappeared from the data.
+	
+	% To show that convincingly, the authors should use surrogate data for which the ground truth about the non-stationary nature of the data is known. Fig. 4 does not show that the method actually performed well on their data. Nor can I see that a neuron was actually absent in a piece of recording where the method did not detect it. Also, slow drift of the waveform within one recording session is often a problem. It was not shown by the authors how their method reacts to slowly changing waveforms, e.g., over a 30min recording (see e.g. [8] that is cited by the authors but only in the context of overlapping spikes).
+	
+	\jovo{We have softened these claims.  We now request that our method ``\emph{copes with neurons dropping in or out over longitudinal data}''.  Coping is a relatively mild requirement that our methodology explicitly addresses.  }
+	
+	\item \textbf{Claim g)} The method is good in finding sparsely firing neurons. 
+	% The toy data set constructed by the authors to demonstrate the ability of their method to detect sparsely firing neurons is particularly bad. Removing all spikes from the data set that are ambiguous/difficult/look weird provides super clean clusters. This is not the problem one faces in spike sorting. It is especially hard to find very small (in terms of number of members) clusters in the presence of severe variability of the clusters, e.g., caused by overlapping spikes when the clustering method assumes clusters that "do not touch" each other. It would be better to add a sparsely firing neuron to the recordings the authors used already for their evaluation and see if their method is able to correctly find it.
+	...
+	A definition of "sparsely firing" is missing. The number of spikes in the individual clusters in fig. 8 are not given!
+	
+	\jovo{We have revised the simulations to include real noise, rather than white noise. While the numerical results differ, the qualitative results are nearly identical.}  
+	\jovo{  We have also now defined ``sparsely firing'' neurons in \S \ref{sec:sparse}:
+	
+	{\it 
+	We operationally define a sparsely firing neuron as a neuron whose spike count has significantly fewer spikes than the other isolated neurons.
+	}
+	
+	}
+	
+	\item I do not agree with the way the authors compare their performance to that of PCA. Clustering in PC space is particularly effected by alignment errors and the number of PCs chosen. Spike alignment should be carried out with upsampling the waveforms and also "easy" procedures to automatically chose the number of PCs exist. This could greatly improve the reference methods performance (and proper spike alignment might even improve the authors methods performance). Also, how were the parameters for the reference methods chosen, e.g., how was the "k" for k-means determined?
+	
+	
+	\jovo{We agree that the PCA analysis that other methods utilize could be substantially improved.  Our intent in comparison was to compare with state of the art algorithms that are most commonly employed.  Our numerical results were essentially identical upon keeping a larger number of principle components. We have appended the following sentence:	
+% \emph{	(note that the presented results are all essentially unchanged upon using the first three, four, or five PCs)}
+	 }
+	\jovo{We have added the below to \S \ref{sec:truth}:
+	
+	
+\emph{	 The ordering of the algorithms is essentially unchanged upon using a different number of mixture components or a different number of principal components.}
+	}
+	
+	What was the space in which the PCs were computed? Were the individual channels concatenated for that? Two and also 3 PCs might be far too few for a 4 channel recording with several neurons present.
+	
+	\jovo{We have now clarified in the \S \ref{sec:truth}:
+	
+	
+\emph{	Specifically, we learn low-dimensional representations using either: dictionary learning (DL) or the first two principal components (PCs) of the matrix consisting of the concatenated waveforms.  For the multichannel data, we stack each waveform matrix to yield a vector, and concatenate stacked waveforms to obtain the data matrix upon which PCA is run.  }
+
+	% and the text appended above later in that same paragraph.
+	
+	}
+	
+	To my knowledge the hc-1 d533101 data set used by the authors has a sampling rate of 10kHz (at least this is written in the file d533101.xml downloaded from the cited cncrs website). If they cut out 40 samples per channel, that results in a 4ms long piece of data. But the waveform in Fig.3 is only 1ms long?
+	
+	\jovo{We truncated the waveform for visualization purposes.  We have clarified in the caption of Figure \ref{fig:missing}:
+	
+\emph{	Note that we only show part of the waveform for visualization purposes.
+}	
+	}
+	
+	\item The authors claim that the joint dictionary learning outperforms classical feature selection techniques like PCA and wavelets but they do not show this part of their results. 
+	% In how far does the space spanned by DL differ from the first k PCs? In how far from wavelets? It would be quite easy to compute a cluster separability measure in these spaces and show that the final DL subspace is actually of fewer dimensions as the number of PCs/wavelets necessary to get the same separability score. So the question is: In how far does the feature extraction contributes to the reported performance increase and in how far the clustering process?
+
+	\jovo{We failed to clarify that DL outperforms PC is indicated in Figure \ref{fig:Accuracy_hc_1}. We add a clarifying sentence to the text:
+	
+\emph{	Specifically, all DL based methods outperform all PC based methods.}
+
+	  }
+
+\end{enumerate}
+
+\subsubsection{Minor Comments}
+
+\begin{enumerate}[a.]
+	\item In the introduction the authors give a list of features an ideal spike sorter would have. This list coincides with the features the authors claim for their method. However, as pointed out by the authors, e.g., in the discussion, an IDEAL spike sorter would have to have even more features: resolving overlapping spike, dealing with bursts, FAST (run time), estimate of the sorting performance! The last point the authors can actually claim for their method, however, they do not.
+	
+	\jovo{Thank you! We have added: ``\emph{provides an estimate of certainty.
+	}'' to the list in \S \ref{sec:intro}.}
+	
+		
+	\item "I) A. Privious Art", 2nd §, "...of theirs with a number enhancements." (p1 rc 40) is missing an "of".
+	
+	\jovo{fixed}
+	
+	\item I have not read the term "longitudinal data" so far in the spike sorting literature. The authors might want to explain that term in the introduction.
+	
+	\jovo{We have now added to \S \ref{sec:intro}, ``\emph{In particular, we are interested in sorting spike from multichannel longitudinal data, where longitudinal data potentially consists of many experiments conducted in the same animal over weeks or months.}''}
+	
+	\item Missing data is usually not a problem in spike sorting and it is not directly clear what part would be missing. The authors might want to explain that term in the introduction.
+	
+	\jovo{We have clarified:  ``\emph{elegantly handles ``missing data'', for example, due to overlapping spikes}'' in the list in \S \ref{sec:intro}.}
+	
+	\item  In fig.8 and 9 the term "Pittsburgh dataset" is used. I guess this is the data set the authors created in this paper. They should name it differently.
+	
+	\jovo{We lack the creativity to think of a more informative and concise name.}
+	
+	\item The authors use the hc-1 data set because it is "widely used". If that is so, they should provide more than one citation using it and compare their performance to that of other publications.
+	
+	\jovo{Several of the methods compared in \S \ref{sec:truth} have previously been utilized on these data.  }
+	
+	\item p6 lc 44: the authors report an accuracy of 94.11\% for the "undamaged" waveforms. How does this relate to fig. 1? Is that simply one value from the distribution shown there for MDP-DL? What happens to the PCA performance if all signals are clipped this way?
+
+	\jovo{The dataset is 90\% "undamaged" waveforms and 10\% clipped waveforms.  This is the MAP sample from the algorithm and is expected to be similar to Fig. 1 because of the majority of the data is the same, but is run on a combination of clipped and complete data.  If all of the signals were clipped in this way, the PCA kmeans performance drops to 86.27\%.  If only thresholded waveforms have been collected, then we may have waveforms of different length and PCA cannot run naively.}
+	%\dec{i have no idea how to answer this.  can you cover it or tell me?}
+	
+	\item On page 4 is two times the same footnote with a different number.
+	
+	\jovo{fixed}
+	
+	\item There is a spelling error in citation [16] "features". Also the citations year was 2000 not 2010. 
+	
+	\jovo{fixed}
+	
+		
+\end{enumerate}
+
+
+
+% \small\bibliography{PGFA_NIPS,myreference,Qisong_NIPS2012}%,,NIPS2012
+% \bibliographystyle{plain}
+
+
+
+
+% that's all folks
+\end{document}
+
+

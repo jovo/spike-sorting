@@ -1,0 +1,188 @@
+Dear Prof. Carin,
+
+Your manuscript "Sorting Electrophysiological Data via Dictionary Learning & Mixture Modeling" (TBME-01626-2012.R1) has been reviewed by the  Transactions on Biomedical Engineering (TBME) editorial review board and the decision is MAJOR REVISION.
+
+The reviewers found scientific merits of your work and made positive comments. However, they also raised a number of issues which make us unable to accept your manuscript for publication in its current form.
+ 
+Below are summary comments of the TBME editorial review board which indicate their concerns and the revisions they suggest to improve the scientific quality of your manuscript. Please revise the manuscript based upon the complete comments listed in the decision letter in Manuscript Central. Please note that if major elements of the critiques are not satisfactorily addressed, the paper may still be rejected.
+
+When you revise, please be advised that TBME intends to follow the general practice of biomedical publications that arguments be well supported by cited literature including recent references in the field of biomedical engineering. This will serve potential readers to better appreciate your work in the context of prior arts and the state of the art.
+
+If you choose to revise, please upload the revised manuscript highlighting the changed texts (printing in RED), and a detailed statement on how you have addressed each of review comments (as a supporting document).
+
+You can use the following link to create your revision:
+
+http://mc.manuscriptcentral.com/tbme-embs?URL_MASK=DcRFPRZfwZwbHyF3XG9K
+
+Please submit your revision within 60 days from today. It will be administratively withdrawn after 60 days deadline.
+
+Also note that we only accept revisions through Manuscript Central (http://mc.manuscriptcentral.com/embs-ieee).  Additional instructions are at the bottom of this email.
+
+I appreciate your selection of the IEEE Transactions on Biomedical Engineering to publish your work, and I look forward to receiving the revision.
+
+Sincerely,
+
+Bin He
+Editor-in-Chief
+IEEE Transactions on Biomedical Engineering
+
+
+Associate Editor comments
+========================
+
+Comments to the Author:
+The reviewers note improvements in the manuscript, but also raise major issues still to be addressed.  Among the concerns are the need to use a more appropriate noise model and the need to better substantiate many of the claims made about the proposed spike sorting method.
+
+Reviewer's Comments
+===================
+
+Reviewer: 2
+Comments to the Author
+General impression
+The authors have significantly revised the manuscript. It is clear that the current version has greatly benefited from the reviewing process.  The presented approach is also easier to follow.
+
+Major Concern
+The authors have strengthened their manuscript by comparing the performance of their method with 2 other algorithms. However the incorporation of a simulated white Gaussian (independent and identically distributed) noise profile in the comparison does not adequately support the manuscript. 
+In Neuroscience (indicatively [1]-[2]) and more specifically in similar studies (indicatively [3]-[6]), the incorporation of – at least – a time-correlated or ‘colored’ Gaussian profile for simulated background noise is recommended.  
+Yet, both the 2 algorithms under comparison pursue Gaussian noise-modeling independence during evaluation, to address a non-stationary background noise profile [7]-[8] as well. (For ‘ISOMAP dominant sets’ see the introduction of the corresponding paper, for Waveclus relative information is more clearly presented here: http://www.scholarpedia.org/article/Spike_sorting  - Step IV).
+To this end, the authors may alternately (instead of adding of a ‘colored’ Gaussian profile in the comparison) pursue a modeling-free noise profile in their simulations by one of the following ways:
+a)	either by incorporating a realistic profile for simulated background noise [9]-[10] (an approach followed by Waveclus authors)
+b)	or by incorporating noise traces (background noise segments) from the experimental recordings (an approach followed by the ‘ISOMAP dominant sets’ method authors). The desirable SNR is then met using an amplification factor.
+As the authors have already used spikes from experimental data in their comparison, the second approach of extracting noise traces (e.g. Fig. 1D in [11]) from the same data seems more plausible. 
+
+Minor Concerns
+
+Definition of SNR
+A definition of the SNR representation (obviously linear) that the authors follow, is absent.
+
+“(Abstract) We propose a ‘construction’… Our ‘construction’ ”
+The use of term ‘algorithm’, ‘method’ seems more plausible.
+
+“ (Page 1, L30).. more recordings simply improve our performance”
+Replace ‘our’ with ‘its’, or revise.
+
+References [31] & [35] are inconsistent. Please see original review text.
+References
+[1]	Faisal et al. Noise in the nervous system. Nat Rev Neurosci (2008) vol. 9 (4) pp. 292-303 
+[2]	Ermentrout et al. Reliability, synchrony and noise. Trends Neurosci (2008) pp.
+[3]	Adamos et al. Performance evaluation of PCA-based spike sorting algorithms. Computer methods and programs in biomedicine (2008)
+[4]	Chan et al. Detection of neuronal spikes using an adaptive threshold based on the max-min spread sorting method. J Neurosci Methods (2008) 
+[5]	Franke et al. An online spike detection and spike classification algorithm capable of instantaneous resolution of overlapping spikes. Journal of computational neuroscience (2009)
+[6]	Shalchyan et al. Spike Detection and Clustering with Unsupervised Wavelet Optimization in Extracellular Neural Recordings. IEEE transactions on bio-medical engineering (2012) 
+[7]	Fee et al. Automatic sorting of multiple unit neuronal signals in the presence of anisotropic and non-Gaussian variability. J Neurosci Methods (1996) 
+[8]	Fee et al. Variability of extracellular spike waveforms of cortical neurons. J Neurophysiol (1996) 
+[9]	Martinez et al. Realistic simulation of extracellular recordings. J Neurosci Methods (2009) 
+[10]	Smith and Mtetwa. A tool for synthesizing spike trains with realistic interference. J Neurosci Methods (2007) vol. 159 (1) pp. 170-80
+[11]	Pouzat et al. Using noise signature to optimize spike-sorting and to assess neuronal classification quality. J Neurosci Methods (2002) 
+
+
+
+Reviewer: 3
+Comments to the Author
+Summary:
+The paper by Wu et al describes a novel approach to spike sorting based on a Bayesian generative model. In brief the method detect spikes via threshold crossing on all prefiltered recording channels, cuts a fixed period of recording around the highest peak that caused the detection, and runs a Gibbs sampling to find a) features via joint dictionary learning, b) the number of clusters in this feature space c) the cluster associations. The steps are carried out as one combined step and not as several distinct and successive steps. The authors claim that this method successfully solves a number of diverse problems in spike sorting like sparsely firing neurons, long recordings and non stationary data. Furthermore, it provides additional information about data quality since the Bayesian model provides posterior distributions for the estimated parameters. The method is evaluated on real recordings from the authors and a publicly available data set with partial ground truth. The problem of sparsely firing neurons is evaluated in another toy data set constructed from the real recordings of the authors.
+
+
+Significance:
+Spike sorting, especially for multielectrode recordings over long periods of time with potential electrode drift, is still an unsolved problem. The proposed method could be of high significance to the community.
+
+The method presented by the authors is a very interesting approach, especially, because it gives distributions of the parameters (e.g. number of clusters) estimated rather than one final number without any hint of certainty/robustness. This is an absolutely crucial point, missing in many publications about spike sorting: How to estimate if the sorting at hand is actually good on a data set without any ground truth? Can I trust the data set?
+
+
+Novelty:
+Combining the feature selection step (dictionary learning) with the clustering in one inherent step is, to my knowledge, new. Also, the strict Bayesian approach that learns all parameters, including the firing rates of the neuron, with diffuse prior distribution, is an interesting and new approach.
+
+
+General Comments:
+
+I will refer to a sentence in the manuscript, e.g., on page 1 in the right column on line 40 as p1 rc 40.
+
+Given the huge scientific effort that was invested into the spike sorting problem and the fact that the principal problems are still not solved, the abstract and introduction of this manuscript are very bold. The authors claim to have solved the following problems/their method has the following attributes:
+
+Claim a) Their method is fully automatic with absolutely no human interactions necessary.
+Claim b) The methods performance improves with number of recording channels
+Claim c) The methods performance improves with length of recordings
+Claim d) The method is robust to movement artifacts by distinguishing them from single unit spikes by "sharing information across channels"
+Claim e) The method handles missing data
+Claim f) The method can deal with non-stationary data over days and even weeks
+Claim g) The method is good in finding sparsely firing neurons
+Claim h) The method can find neurons that appear in the data
+Claim i) The method can re-find neurons that disappeared from the data
+
+However, in my view, most of these statements are not backed up by the authors with sufficient and convincing results showing that they actually solved the problems. These claims are addressed individually below. The authors should either weaken their claims or add significantly more results.
+
+
+Major comments:
+
+- "Claim b) The methods performance improves with number of recording channels"
+This is not shown by the authors. For that they would have to run their sorting on a varying number of channels and show that the ­_increase_ of their performance is consistently higher than that of other methods.
+
+- "Claim c) The methods performance improves with length of recordings"
+That would be a very interesting analysis to conduct and the authors should show this. Many methods have the problem that several hours of recordings contain too many spikes for the sorter to work well although, in principle, more and more spikes should make it possible to estimate cluster densities more accurately. How is performance of the method affected by length? What happens for very long recordings?
+
+- "Claim d) The method is robust to movement artifacts by distinguishing them from single unit spikes by "sharing information across channels""
+On p2 rc 2 the authors describe artifacts as spikes on one channel. In Fig.6 they show a "noise unit" that looks like a spike on all channels and refer to it as an artifact.
+a) There is an inconsistency in what the authors refer to as artifacts (single channel vs all channels).
+b) To my knowledge, the worst form of artifacts are indeed caused by movements but are of microphonic nature, meaning they are cyclic over potentially longer periods of time in the same frequency band as spikes and might be strongly shared among different channels of a multielectrode. This is not at all addressed by the authors.
+c) The authors do not show in any way convincingly that their method is robust to artifacts (as they claim). The signal they show in fig.6 could be coming from many small amplitude spikes from neurons further away.
+
+- "Claim f) The method can deal with non-stationary data over days and even weeks"
+& "Claim h) The method can find neurons that appear in the data"
+& "Claim i) The method can re-find neurons that disappeared from the data"
+To show that convincingly, the authors should use surrogate data for which the ground truth about the non-stationary nature of the data is known. Fig. 4 does not show that the method actually performed well on their data. Nor can I see that a neuron was actually absent in a piece of recording where the method did not detect it. Also, slow drift of the waveform within one recording session is often a problem. It was not shown by the authors how their method reacts to slowly changing waveforms, e.g., over a 30min recording (see e.g. [8] that is cited by the authors but only in the context of overlapping spikes).
+
+- "Claim g) The method is good in finding sparsely firing neurons"
+The toy data set constructed by the authors to demonstrate the ability of their method to detect sparsely firing neurons is particularly bad. Removing all spikes from the data set that are ambiguous/difficult/look weird provides super clean clusters. This is not the problem one faces in spike sorting. It is especially hard to find very small (in terms of number of members) clusters in the presence of severe variability of the clusters, e.g., caused by overlapping spikes when the clustering method assumes clusters that "do not touch" each other. It would be better to add a sparsely firing neuron to the recordings the authors used already for their evaluation and see if their method is able to correctly find it.
+A definition of "sparsely firing" is missing. The number of spikes in the individual clusters in fig. 8 are not given!
+
+- I do not agree with the way the authors compare their performance to that of PCA. Clustering in PC space is particularly effected by alignment errors and the number of PCs chosen. Spike alignment should be carried out with upsampling the waveforms and also "easy" procedures to automatically chose the number of PCs exist. This could greatly improve the reference methods performance (and proper spike alignment might even improve the authors methods performance).
+Also, how were the parameters for the reference methods chosen, e.g., how was the "k" for k-means determined?
+What was the space in which the PCs were computed? Were the individual channels concatenated for that? Two and also 3 PCs might be far too few for a 4 channel recording with several neurons present.
+To my knowledge the hc-1 d533101 data set used by the authors has a sampling rate of 10kHz (at least this is written in the file d533101.xml downloaded from the cited cncrs website). If they cut out 40 samples per channel, that results in a 4ms long piece of data. But the waveform in Fig.3 is only 1ms long?
+
+- The authors claim that the joint dictionary learning outperforms classical feature selection techniques like PCA and wavelets but they do not show this part of their results. In how far does the space spanned by DL differ from the first k PCs? In how far from wavelets? It would be quite easy to compute a cluster separability measure in these spaces and show that the final DL subspace is actually of fewer dimensions as the number of PCs/wavelets necessary to get the same separability score. So the question is: In how far does the feature extraction contributes to the reported performance increase and in how far the clustering process?
+
+
+Minor comments:
+
+1. In the introduction the authors give a list of features an ideal spike sorter would have. This list coincides with the features the authors claim for their method. However, as pointed out by the authors, e.g., in the discussion, an IDEAL spike sorter would have to have even more features: resolving overlapping spike, dealing with bursts, FAST (run time), estimate of the sorting performance! The last point the authors can actually claim for their method, however, they do not.
+
+2. "I) A. Privious Art", 2nd §, "...of theirs with a number enhancements." (p1 rc 40) is missing an "of".
+
+3. I have not read the term "longitudinal data" so far in the spike sorting literature. The authors might want to explain that term in the introduction.
+
+4. Missing data is usually not a problem in spike sorting and it is not directly clear what part would be missing. The authors might want to explain that term in the introduction.
+
+5. "Claim e) The method handles missing data"
+I do not see that this is of any importance for spike sorting, especially not the way the it is shown in fig.3. This is not an illustration of "substantial missing data" (p6 lc 50) as claimed by the authors. The samples that are missing are probably most uninformative about the waveform and might actually be contaminated by overlapping spikes. Often, cutting far into the waveform and concentrating on the very region around the peak can thus increase performance!
+
+6. "Claim a) Their method is fully automatic with absolutely no human interactions necessary."
+If that is true, why do the authors present the "knob" to fine tune the noise estimation? Is that "knob", if turned, actually always decreasing the performance? The authors have the data to evaluate the performance of the method with different settings of that "knob".
+
+7. In fig.8 and 9 the term "Pittsburgh dataset" is used. I guess this is the data set the authors created in this paper. They should name it differently.
+
+8. The authors use the hc-1 data set because it is "widely used". If that is so, they should provide more than one citation using it and compare their performance to that of other publications.
+
+9. p6 lc 44: the authors report an accuracy of 94.11% for the "undamaged" waveforms. How does this relate to fig. 1? Is that simply one value from the distribution shown there for MDP-DL? What happens to the PCA performance if all signals are clipped this way?
+
+10. On page 4 is two times the same footnote with a different number.
+
+11. There is a spelling error in citation [16] "features". Also the citations year was 2000 not 2010. Please recheck also the other citations.
+
+
+References:
+[8] Franke et al. An online spike detection and spike classification algorithm capable of instantaneous resolution of overlapping spikes. Journal of computational neuroscience (2010) vol. 29 (1-2) pp. 127-148
+
+
+NOTE: Corresponding Author MUST check to see if additional comments were included as a downloadable file in the corresponding author's Author Center, by:
+(a) clicking on Manuscripts with Decisions
+(b) clicking on View Decision Letter at the bottom right
+(c) looking at the bottom of the letter for a link to the review files
+
+
+RESUBMISSION INSTRUCTIONS
+=========================
+In order to properly resubmit your manuscript, please follow the following instructions. Please read them carefully. Not following these instructions will delay the review of you manuscript.
+- go to http://mc.manuscriptcentral.com/embs-ieee and login with the account the manuscript was originally submitted with
+- you will find your manuscript under the "Manuscripts with Decisions" section.
+- follow the steps by clicking on 'create a revision'
