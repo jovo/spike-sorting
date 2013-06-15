@@ -619,7 +619,8 @@ The value of $\omega_0$ defines how much of a given signal is associated with no
 Recently, several manuscripts have directly addressed spike sorting in the present of sparsely firing neurons \cite{Pedreira2012, Adamos2012}.  We operationally define a sparsely  firing neuron as a neuron whose spike count has significantly fewer spikes than the other isolated neurons.
 % 
 Based on reviewer recommendations, we assessed the performance of FMM-DL in such regimes utilizing the following synthetic data.  First, we extracted spike waveforms from four clusters from the new dataset discussed in Section \ref{sub:data_acquisition_and_pre_processing}.  We excluded all waveforms that did not clearly separate (Figure \ref{fig:Sparse_firing_neuron}(a1))
-to obtain clear clustering criteria (Figure \ref{fig:Sparse_firing_neuron}(a2)).  Then, 
+to obtain clear clustering criteria (Figure \ref{fig:Sparse_firing_neuron}(a2)).  There were 2592, 148, 506, and 64 spikes in the first, second, third, and fourth cluster, respectively.
+  Then, 
 we added real noise---as described in section \ref{sec:eval}---to each waveform at two different levels to obtain increasingly noisy and less-well separated clusters (Figure \ref{fig:Sparse_firing_neuron}(b1), (b2), (c1), and (c2)).  We applied FMM-DL, Wave-clus \cite{Pedreira2012} and Wave-clus ``forced'' (in which we hand tune the parameters to obtain optimal results) and ISOMAP dominant sets \cite{Adamos2012} to all three signal-to-noise ratio (SNR) regimes to assess our relative performance with the following results.
 
 \begin{figure*}[!htbp]
